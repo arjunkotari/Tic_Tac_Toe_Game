@@ -27,49 +27,84 @@ public class TicTacToe {
 		//calling createBoard method in main method		 
 		showBoard(gameBoard);
 		char[] board = createBoard();
-		allowPlayer();
+		//allowPlayer();
 		//calling showBoard method
-		System.out.println("Enter your place 1-9");
+		System.out.println("Enter your position 1-9");
 		position = Utility.getUserInteger();
 		makeMove(gameBoard, position);
 		showBoard(gameBoard);
-		
-		
-		
+				
 		
 	}
 	/*
 	 * placing moves into specific position
+	 * If the place is free then place the X
 	 */
 	public static void makeMove(char[][] gameBoard, int position) {
-
+		
 		switch(position) {
 		case 1:
-			gameBoard[0][0] = 'X';
+			if(gameBoard[0][0] != 'X') {
+				gameBoard[0][0] = 'X';
+			}	
+			else
+				System.out.println("Position full...");
 			break;
 		case 2:
-			gameBoard[0][2] = 'X';
+			if(gameBoard[0][2] != 'X') {
+				gameBoard[0][2] = 'X';
+			}	
+			else
+				System.out.println("Position full...");
 			break;
 		case 3:
-			gameBoard[0][4] = 'X';
+			if(gameBoard[0][4] != 'X') {
+				gameBoard[0][4] = 'X';
+			}	
+			else
+				System.out.println("Position full...");
 			break;
 		case 4:
-			gameBoard[2][0] = 'X';
+			if(gameBoard[2][0] != 'X') {
+				gameBoard[2][0] = 'X';
+			}	
+			else
+				System.out.println("Position full...");
 			break;
 		case 5:
-			gameBoard[2][2] = 'X';
+			if(gameBoard[2][2] != 'X') {
+				gameBoard[2][2] = 'X';
+			}	
+			else
+				System.out.println("Position full...");
 			break;
 		case 6:
-			gameBoard[2][4] = 'X';
+			if(gameBoard[2][4] != 'X') {
+				gameBoard[2][4] = 'X';
+			}	
+			else
+				System.out.println("Position full...");
 			break;
 		case 7:
-			gameBoard[4][0] = 'X';
+			if(gameBoard[4][0] != 'X') {
+				gameBoard[4][0] = 'X';
+			}	
+			else
+				System.out.println("Position full...");
 			break;
 		case 8:
-			gameBoard[4][2] = 'X';
+			if(gameBoard[4][2] != 'X') {
+				gameBoard[4][2] = 'X';
+			}	
+			else
+				System.out.println("Position full...");
 			break;
 		case 9:
-			gameBoard[4][4] = 'X';
+			if(gameBoard[4][4] != 'X') {
+				gameBoard[4][4] = 'X';
+			}	
+			else
+				System.out.println("Position full...");
 			break;
 		default:
 			break;
@@ -91,7 +126,7 @@ public class TicTacToe {
 	 * Creating method to allow player to input X or O
 	 */
 	public static char allowPlayer() {
-		System.out.println("Please enter X or O");
+		System.out.println("Please enter X");
 		char playerMove =Utility.getUserChar();
 		return playerMove;
 	}
