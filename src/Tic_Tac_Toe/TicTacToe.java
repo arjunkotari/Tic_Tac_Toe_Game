@@ -21,15 +21,33 @@ public class TicTacToe {
 		int user=1;
 		//calling createBoard method in main method		 
 		char[] board = createBoard();
-allowPlayer();
+		allowPlayer();
+		//calling showBoard method
+		showBoard();
 		
+	}
+	/*
+	 * creating a method to display the board
+	 */
+	public static void showBoard() {
+		char[][] gameBoard = {{' ','|',' ','|',' '},
+				{'-','+','-','+','-'},
+				{' ','|',' ','|',' '},
+				{'-','+','-','+','-'},
+				{' ','|',' ','|',' '}};
+		for(char[] row:gameBoard) {
+			for(char display:row) {
+				System.out.print(display);
+			}
+			System.out.println();
+		}
 	}
 	/*
 	 * Creating method to allow player to input X or O
 	 */
 	public static char allowPlayer() {
 		System.out.println("Please enter X or O");
-		char playerMove = Utility.getUserChar();
+		char playerMove =Utility.getUserChar();
 		return playerMove;
 	}
 }
