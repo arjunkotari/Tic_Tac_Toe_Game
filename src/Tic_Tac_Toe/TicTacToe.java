@@ -28,8 +28,12 @@ public class TicTacToe {
 		}
 		turn %= 2;		
 		playerMove = allowPlayer(turn,playerMove,toss);
-		//calling showBoard method		
+		//calling showBoard method	to display game board
 		makeMove(gameBoard,turn,position,board);
+		//replay the game until user enter n.
+		System.out.println("Do want to play again....(y/n)");
+		char replay = Utility.getUserChar();
+		continueGameplay(replay);
 		
 	}
 	/*
@@ -46,7 +50,10 @@ public class TicTacToe {
 	}
 	/*
 	 * placing moves into specific position
-	 * If the place is free then place the X
+	 * check the position is free or not
+	 * If the position is full then re-choose the position
+	 * checks winning positions
+	 * i.e..Win or Loss or Tie
 	 */
 	public static void makeMove(char[][] gameBoard,int turn,int position, char[] board) {
 		char move;
@@ -57,9 +64,10 @@ public class TicTacToe {
 		else if(turn == 0) {
 			turn =1;
 		}
-		//change turn
+		//repeat until board is full or win the game
 		for(int i=1; i<=9; i++)
-		{
+		{	
+			//checks it's player turn or system turn
 			if(turn % 2 == 0) {
 				System.out.println("Player turn...");	
 				move = 'X';
@@ -79,12 +87,14 @@ public class TicTacToe {
 			
 			switch(position) {
 			case 1:
+				//checks position is full or not
 				if(gameBoard[0][0] != 'X' && gameBoard[0][0] != 'O') {
 					gameBoard[0][0] = move;
 					board[1]=move;
 				}	
 				else {
 					System.out.println("Position full...");
+					// if the position is full then it unable to place X or O and re-choose the position
 					i--;
 					turn--;
 				}
@@ -184,6 +194,7 @@ public class TicTacToe {
 			showBoard(gameBoard);
 			/*
 			 * check winner
+			 * i.e Win or not or Tie
 			 */
 			if(gameBoard[0][0]=='X' && gameBoard[0][2]=='X' && gameBoard[0][4]=='X' )
 			{
@@ -288,7 +299,7 @@ public class TicTacToe {
 	 * creating a method to display the board
 	 */
 	public static void showBoard(char[][] gameBoard) {
-		
+		//condition for display game board
 		for(char[] row:gameBoard) {
 			for(char display:row) {
 				System.out.print(display);
@@ -298,6 +309,8 @@ public class TicTacToe {
 	}
 	/*
 	 * Creating method to allow player to input X or O
+	 * checks who won the task 
+	 * i.e player or system,
 	 */
 	public static char allowPlayer(int turn,char playerMove, int toss) {
 		if(turn == toss) {
@@ -311,5 +324,24 @@ public class TicTacToe {
 			
 		}
 		return playerMove;
+	}
+	/*
+	 * continue game until user press n.
+	 */
+	public static void continueGameplay(char replay) {
+		while (replay == 'y') {
+			char[][] gameBoard = {{' ','|',' ','|',' '},
+					{'-','+','-','+','-'},
+					{' ','|',' ','|',' '},
+					{'-','+','-','+','-'},
+					{' ','|',' ','|',' '}};
+			int turn=1,position = 0;
+			char[] board = createBoard();
+			makeMove(gameBoard, turn, position, board);
+			System.out.println("Do want to play again....(y/n)");
+			char replay1 = Utility.getUserChar();
+			replay = replay1;
+					
+		}
 	}
 }

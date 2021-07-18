@@ -21,8 +21,4 @@ public class Utility {
 	return sc.next().charAt(0);
 	}
 	
-	public static String getUserEnter() {
-	return sc.nextLine();
-	}
-
 }
